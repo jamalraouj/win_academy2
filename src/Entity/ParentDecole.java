@@ -2,28 +2,11 @@ package Entity;
 
 import java.util.ArrayList;
 
-public class ParentDecole {
-    private int id;
-    private User user;
+public class ParentDecole extends User {
 
-    public ParentDecole(int id, User user) {
-        this.id = id;
-        this.user = user;
+    public ParentDecole(String CIN, String nom, String prenom, String telephone, String email, String password, int age, Role role) {
+        super(CIN, nom, prenom, telephone, email, password, age, role);
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

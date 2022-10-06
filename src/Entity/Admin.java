@@ -1,31 +1,23 @@
 package Entity;
 
-public class Admin {
-    private  int id;
-    private User user;
+import java.util.ArrayList;
 
-    public Admin(User user) {
-        this.user = user;
+public class Admin extends  User {
+    private ArrayList<College> colleges;
+
+    public Admin(String CIN, String nom, String prenom, String telephone, String email, String password, int age,  Role role) {
+        super(CIN, nom, prenom, telephone, email, password, age, role);
+        colleges = new ArrayList<>();
     }
 
-    public Admin(int id, User user) {
-        this.id = id;
-        this.user = user;
+    public ArrayList<College> getColleges() {
+        return colleges;
     }
 
-    public int getId() {
-        return id;
+    public void addCollege(College college) {
+        this.colleges.add(college);
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setColleges(ArrayList<College> colleges) {
+        this.colleges = colleges;
     }
 }

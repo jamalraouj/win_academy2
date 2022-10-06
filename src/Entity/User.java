@@ -3,6 +3,7 @@ package Entity;
 //import javax.management.relation.Role;
 
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class User {
@@ -15,9 +16,10 @@ public class User {
     private int age;
     private ArrayList<Adresse> adresse;
     private Role role;
-    private Date date_dinscription;
+    private LocalDateTime date_dinscription ;
 
-    public User(String CIN, String nom, String prenom, String telephone, String email, String password, int age, ArrayList<Adresse> adresse, Role role, Date date_dinscription) {
+    public User(String CIN, String nom, String prenom, String telephone, String email, String password, int age, Role role) {
+        this.adresse = new ArrayList<>();
         this.CIN = CIN;
         this.nom = nom;
         this.prenom = prenom;
@@ -25,9 +27,8 @@ public class User {
         this.email = email;
         this.password = password;
         this.age = age;
-        this.adresse = adresse;
         this.role = role;
-        this.date_dinscription = date_dinscription;
+        this.date_dinscription = LocalDateTime.now();
     }
 
 
@@ -46,7 +47,12 @@ public class User {
     public void setNom(String nom) {
         this.nom = nom;
     }
+    public void addAdress(Adresse adresse){
 
+         this.adresse.add(adresse);
+
+
+    }
     public String getPrenom() {
         return prenom;
     }
@@ -91,8 +97,8 @@ public class User {
         return adresse;
     }
 
-    public void setAdresse(ArrayList<Adresse> adresse) {
-        this.adresse = adresse;
+    public void setAdresse(Adresse adresse) {
+        this.adresse.add(adresse);
     }
 
     public Role getRole() {
@@ -103,11 +109,27 @@ public class User {
         this.role = role;
     }
 
-    public Date getDate_dinscription() {
+    public LocalDateTime getDate_dinscription() {
         return date_dinscription;
     }
 
-    public void setDate_dinscription(Date date_dinscription) {
+    public void setDate_dinscription(LocalDateTime date_dinscription) {
         this.date_dinscription = date_dinscription;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "CIN='" + CIN + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", adresse=" + adresse +
+                ", role=" + role +
+                ", date_dinscription=" + date_dinscription +
+                '}';
     }
 }

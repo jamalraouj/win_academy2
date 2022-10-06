@@ -4,61 +4,26 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
-public class Proffeseure {
-    private int id;
-    private User user;
-    private Directuer directuer;
-    private Salle salle;
-    private Matier matier;
+public class Proffeseure extends  User{
+
+
+
+    private int id_matier;
     private ArrayList<Class> classes;
 
-    public Proffeseure(int id, User user, Directuer directuer, Salle salle, Matier matier, ArrayList<Class> classes) {
-        this.id = id;
-        this.user = user;
-        this.directuer = directuer;
-        this.salle = salle;
-        this.matier = matier;
-        this.classes = classes;
+    public Proffeseure(String CIN, String nom, String prenom, String telephone, String email, String password, int age,  Role role, int matier) {
+        super(CIN, nom, prenom, telephone, email, password, age, role);
+        this.id_matier = matier;
+        classes = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
+
+    public int getMatier() {
+        return id_matier;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Directuer getDirectuer() {
-        return directuer;
-    }
-
-    public void setDirectuer(Directuer directuer) {
-        this.directuer = directuer;
-    }
-
-    public Salle getSalle() {
-        return salle;
-    }
-
-    public void setSalle(Salle salle) {
-        this.salle = salle;
-    }
-
-    public Matier getMatier() {
-        return matier;
-    }
-
-    public void setMatier(Matier matier) {
-        this.matier = matier;
+    public void setMatier(int matier) {
+        this.id_matier = matier;
     }
 
     public ArrayList<Class> getClasses() {
@@ -67,5 +32,9 @@ public class Proffeseure {
 
     public void setClasses(ArrayList<Class> classes) {
         this.classes = classes;
+    }
+    public void addClass(Class classe){
+        this.classes.add(classe);
+
     }
 }

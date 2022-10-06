@@ -1,19 +1,33 @@
 package Entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Class {
-    private int id;
+    private static final AtomicInteger _ID = new AtomicInteger(0);
+    private  int id ;
     private String nom;
-    private Date annee;
-    private Set<Proffeseure> proffeseures;
+    private String annee;
+    private ArrayList<Etudient> etudents = new ArrayList<>();
 
-    public Class(int id, String nom, Date annee, Set<Proffeseure> proffeseures) {
-        this.id = id;
+
+    public Class( String nom, String annee) {
+        this.id = _ID.incrementAndGet();
         this.nom = nom;
         this.annee = annee;
-        this.proffeseures = proffeseures;
+    }
+
+    public void addEtudient(Etudient etudient){
+        etudents.add(etudient);
+    }
+    public ArrayList<Etudient> getEtudents() {
+        return etudents;
+    }
+
+    public void setEtudents(ArrayList<Etudient> etudents) {
+        this.etudents = etudents;
     }
 
     public int getId() {
@@ -32,19 +46,20 @@ public class Class {
         this.nom = nom;
     }
 
-    public Date getAnnee() {
+    public String getAnnee() {
         return annee;
     }
 
-    public void setAnnee(Date annee) {
+    public void setAnnee(String annee) {
         this.annee = annee;
     }
 
-    public Set<Proffeseure> getProffeseures() {
-        return proffeseures;
-    }
-
-    public void setProffeseures(Set<Proffeseure> proffeseures) {
-        this.proffeseures = proffeseures;
+    @Override
+    public String toString() {
+        return "Class{" +
+                "nom='" + nom + '\'' +
+                ", annee='" + annee + '\'' +
+                ", etudents=" + etudents +
+                '}';
     }
 }

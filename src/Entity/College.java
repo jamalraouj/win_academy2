@@ -1,20 +1,40 @@
 package Entity;
 
+import com.sun.deploy.security.SessionCertStore;
+
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class College {
-    private int id;
+    private static final AtomicInteger _ID = new AtomicInteger(0);
+
+    private int id  ;
     private String nom;
-    private Admin admin;
 
-    public College(int id, String nom, Admin admin) {
-        this.id = id;
+    private Directuer directuer;
+    private ArrayList<Department> departments = new ArrayList<>();
+
+    public College( String nom ) {
+        this.id = _ID.incrementAndGet();
         this.nom = nom;
-        this.admin = admin;
+
     }
-    public College( String nom, Admin admin) {
-        this.nom = nom;
-        this.admin = admin;
+    public College( ) {
+    }
+    public  void  addDepartement(Department department){
+            this.departments.add(department);
+    }
+    public Directuer getDirectuer() {
+        return directuer;
     }
 
+    public void setDirectuer(Directuer directuer) {
+        this.directuer = directuer;
+    }
+
+    public void addDepartment(Department department){
+        departments.add(department);
+}
     public int getId() {
         return id;
     }
@@ -31,11 +51,11 @@ public class College {
         this.nom = nom;
     }
 
-    public Admin getAdmin() {
-        return admin;
+    public ArrayList<Department> getDepartments() {
+        return departments;
     }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
+    public void setDepartments(ArrayList<Department> departments) {
+        this.departments = departments;
     }
 }

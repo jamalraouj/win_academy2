@@ -1,26 +1,23 @@
 package Entity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Etudient {
-    private int id;
+public class Etudient  extends User{
+
     private ParentDecole parentDecole;
-    private User user;
-    private ArrayList<Class> classes;
+    ArrayList<Note> notes = new ArrayList<>();
 
-    public Etudient(int id, ParentDecole parentDecole, User user, ArrayList<Class> classes) {
-        this.id = id;
+    public Etudient(String CIN, String nom, String prenom, String telephone, String email, String password, int age, Role role,  ParentDecole parentDecole) {
+        super(CIN, nom, prenom, telephone, email, password, age, role);
         this.parentDecole = parentDecole;
-        this.user = user;
-        this.classes = classes;
     }
-
-    public int getId() {
-        return id;
+    public Etudient(String CIN, String nom, String prenom, String telephone, String email, String password, int age, Role role) {
+        super(CIN, nom, prenom, telephone, email, password, age, role);
     }
+    public void addAddress(Adresse adresse){
+        this.getAdresse().add(adresse);
 
-    public void setId(int id) {
-        this.id = id;
     }
 
     public ParentDecole getParentDecole() {
@@ -30,20 +27,22 @@ public class Etudient {
     public void setParentDecole(ParentDecole parentDecole) {
         this.parentDecole = parentDecole;
     }
-
-    public User getUser() {
-        return user;
+    public void addNote(Note note){
+        this.notes.add(note);
+    }
+    public ArrayList<Note> getNotes() {
+        return notes;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setNotes(ArrayList<Note> notes) {
+        this.notes = notes;
     }
 
-    public ArrayList<Class> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(ArrayList<Class> classes) {
-        this.classes = classes;
+    @Override
+    public String toString() {
+        return "Etudient{" +
+                "parentDecole=" + parentDecole +
+                ", notes=" + notes +
+                '}';
     }
 }

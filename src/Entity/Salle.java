@@ -1,16 +1,23 @@
 package Entity;
 
-public class Salle {
-    private  int id;
-    private  String matricule;
-    private Department department;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-    public Salle(int id, String matricule, Department department) {
-        this.id = id;
+public class Salle {
+    private static final AtomicInteger _ID = new AtomicInteger(0);
+
+    private int id;
+    private  String matricule;
+    ArrayList<Proffeseure> proffeseures = new ArrayList<>();
+
+    public Salle( String matricule) {
+        this.id = _ID.incrementAndGet();
         this.matricule = matricule;
-        this.department = department;
     }
 
+    public void addProff(Proffeseure proffeseure){
+        proffeseures.add(proffeseure);
+    }
     public int getId() {
         return id;
     }
@@ -27,11 +34,11 @@ public class Salle {
         this.matricule = matricule;
     }
 
-    public Department getDepartment() {
-        return department;
+    public ArrayList<Proffeseure> getProffeseures() {
+        return proffeseures;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setProffeseures(ArrayList<Proffeseure> proffeseures) {
+        this.proffeseures = proffeseures;
     }
 }

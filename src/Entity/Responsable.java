@@ -1,14 +1,16 @@
 package Entity;
 
 public class Responsable {
-    private int id;
+    private static int id;
     private Proffeseure proffeseure;
-    private Department department;
 
-    public Responsable(int id, Proffeseure proffeseure, Department department) {
-        this.id = id;
+
+    public Responsable( Proffeseure proffeseure) {
+        this.id++;
+        proffeseure.setRole(Role.RESPONSABLE);
         this.proffeseure = proffeseure;
-        this.department = department;
+    }
+    public Responsable() {
     }
 
     public int getId() {
@@ -27,11 +29,5 @@ public class Responsable {
         this.proffeseure = proffeseure;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 }

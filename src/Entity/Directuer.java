@@ -1,37 +1,24 @@
 package Entity;
 
-public class Directuer {
-    private int id;
-    private User user;
-    private College college;
+import java.util.ArrayList;
 
-    public Directuer(int id, User user, College college) {
-        this.id = id;
-        this.user = user;
-        this.college = college;
+public class Directuer extends User {
+
+
+ArrayList<Proffeseure> proffeseures = new ArrayList<>();
+
+    public Directuer(String CIN, String nom, String prenom, String telephone, String email, String password, int age,  Role role) {
+        super(CIN, nom, prenom, telephone, email, password, age, role);
     }
 
-    public int getId() {
-        return id;
+    public void addProffesseur(Proffeseure proffeseure){
+        proffeseures.add(proffeseure);
+    }
+    public ArrayList<Proffeseure> getProffeseures() {
+        return proffeseures;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public College getCollege() {
-        return college;
-    }
-
-    public void setCollege(College college) {
-        this.college = college;
+    public void setProffeseures(ArrayList<Proffeseure> proffeseures) {
+        this.proffeseures = proffeseures;
     }
 }
